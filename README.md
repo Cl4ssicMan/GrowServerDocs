@@ -70,6 +70,33 @@ add_string("add_label_with_icon|big|Title Text|left|602\nadd_textbox|This is an 
 send_packet(2);
 ```
 
+🎨 Dialog Components Reference
+
+| Component            | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `add_label_with_icon`| Adds a label with a Growtopia icon. Format: `add_label_with_icon|size|text|alignment|iconID` |
+| `add_textbox`        | Adds a scrollable text area. Format: `add_textbox|Your text here`           |
+| `add_text_input`     | Adds a text input box. Format: `add_text_input|label|default|input_id`       |
+| `add_button`         | Adds a button. Format: `add_button|Button Text|button_id`                   |
+| `add_spacer`         | Adds vertical spacing between elements.                                     |
+| `add_checkbox`       | Adds a checkbox. Format: `add_checkbox|label|checkbox_id|checked` (checked = 1 or 0) |
+| `add_dropdown`       | Adds a dropdown. Format: `add_dropdown|label|dropdown_id|option1|option2...` |
+| `embed_data`         | Adds hidden data that can be sent back to the server. Format: `embed_data|data_id|value` |
+| `end_dialog`         | Ends the dialog. Format: `end_dialog|dialog_id|accept_button|cancel_button` |
+
+📦 Example:
+```
+add_callback("OnDialogRequest");
+add_string("add_label_with_icon|big|Server Notice|left|112\n"
+           "add_textbox|Welcome to GrowServer!\n"
+           "add_text_input|Enter your name|Player123|name_input\n"
+           "add_checkbox|I accept the rules|rules_accept|0\n"
+           "add_button|Submit|submit_btn\n"
+           "add_button|Cancel|cancel_btn\n"
+           "end_dialog|welcome_dialog|submit_btn|cancel_btn");
+send_packet(2);
+```
+
 --------------------
 🔐 Security Notes
 --------------------
@@ -104,4 +131,3 @@ send_packet(2);
 ====================
 End of Documentation
 ====================
-
